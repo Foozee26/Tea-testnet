@@ -1,6 +1,6 @@
 # Tea Testnet Scripts
 
-Kho lưu trữ này chứa một bộ sưu tập các tập lệnh Python được thiết kế để tương tác với **Tea Testnet**, một mạng lưới thử nghiệm blockchain hiệu suất cao. Các tập lệnh này cho phép người dùng thực hiện nhiều hành động như nhận TEA từ faucet, triển khai hợp đồng token và NFT, đúc token/NFT, gửi giao dịch và quản lý tài sản trên Tea Testnet bằng RPC của mạng. Mỗi tập lệnh được xây dựng bằng thư viện `web3.py` và cung cấp hỗ trợ song ngữ (tiếng Anh và tiếng Việt) để tương tác với người dùng.
+Kho lưu trữ này chứa một bộ sưu tập các tập lệnh Python được thiết kế để tương tác với **Tea Testnet**, một mạng lưới thử nghiệm blockchain hiệu suất cao. Các tập lệnh này cho phép người dùng thực hiện nhiều hành động như nhận TEA từ triển khai hợp đồng token và NFT, đúc token/NFT, gửi giao dịch và quản lý tài sản trên Tea Testnet bằng RPC của mạng. Mỗi tập lệnh được xây dựng bằng thư viện `web3.py` và cung cấp hỗ trợ song ngữ (tiếng Anh và tiếng Việt) để tương tác với người dùng.
 
 Faucet: [Tea Testnet Faucet](https://faucet-sepolia.tea.xyz)
 
