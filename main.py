@@ -102,17 +102,17 @@ def get_available_scripts(language):
             {"name": "1. Gửi TX ngẫu nhiên hoặc File (address.txt) | Tea Testnet", "value": "sendtx"},
             {"name": "2. Deploy Token smart-contract | Tea Testnet", "value": "deploytoken"},
             {"name": "3. Gửi Token ERC20 ngẫu nhiên hoặc File (addressERC20.txt) | Tea Testnet", "value": "sendtoken"},
-            {"name": "4. Deploy NFT - Quản lí NFT [Tạo | Đúc | Đốt] | Tea Testnet", "value": "nftcollection"},
-            {"name": "5. ETH Bridging (Sepolia ↔ Tea Testnet) | Tea Testnet", "value": "ethbridge"},
-            {"name": "6. Thoát", "value": "exit"},
+            {"name": "4. Deploy NFT - Quản lí NFT [ Tạo | Đúc | Đốt ] | Tea Testnet", "value": "nftcollection"},
+            #{"name": "5. ETH Bridging (Sepolia ↔ Tea Testnet) | Tea Testnet", "value": "ethbridge"},
+            {"name": "5. Thoát", "value": "exit"},
         ],
         'en': [
             {"name": "1. Send Random TX or File (address.txt) | Tea Testnet", "value": "sendtx"},
             {"name": "2. Deploy Token Smart Contract | Tea Testnet", "value": "deploytoken"},
             {"name": "3. Send ERC20 Token Randomly or File (addressERC20.txt) | Tea Testnet", "value": "sendtoken"},
-            {"name": "4. Deploy NFT - Manage NFT Collection [Create | Mint | Burn] | Tea Testnet", "value": "nftcollection"},
-            {"name": "5. ETH Bridging (Sepolia ↔ Tea Testnet) | Tea Testnet", "value": "ethbridge"},
-            {"name": "6. Exit", "value": "exit"},
+            {"name": "4. Deploy NFT - Manage NFT Collection [ Create | Mint | Burn ] | Tea Testnet", "value": "nftcollection"},
+            #{"name": "5. ETH Bridging (Sepolia ↔ Tea Testnet) | Tea Testnet", "value": "ethbridge"},
+            {"name": "5. Exit", "value": "exit"},
         ]
     }
     return scripts[language]
