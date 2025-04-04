@@ -86,6 +86,22 @@ async def run_ethbridge(language: str):
     from scripts.ethbridge import run as ethbridge_run
     await ethbridge_run(language)
 
+async def run_stakingtea(language: str):
+    from scripts.stakingtea import run as stakingtea_run
+    await stakingtea_run(language)
+
+async def run_unstaketea(language: str):
+    from scripts.unstaketea import run as unstaketea_run
+    await unstaketea_run(language)
+
+async def run_deposittea(language: str):
+    from scripts.deposittea import run as deposittea_run
+    await deposittea_run(language)
+
+async def run_withdrawtea(language: str):
+    from scripts.withdrawtea import run as withdrawtea_run
+    await withdrawtea_run(language)
+    
 # Danh sách script với ánh xạ trực tiếp
 SCRIPT_MAP = {
     "sendtx": run_sendtx,
@@ -93,6 +109,11 @@ SCRIPT_MAP = {
     "sendtoken": run_sendtoken,
     "nftcollection": run_nftcollection,
     "ethbridge": run_ethbridge,
+    "stakingtea": run_stakingtea,
+    "unstaketea": run_unstaketea,
+    "deposittea": run_deposittea,
+    "withdrawtea": run_withdrawtea,
+
     "exit": lambda language: sys.exit(0)
 }
 
@@ -103,16 +124,26 @@ def get_available_scripts(language):
             {"name": "2. Deploy Token smart-contract | Tea Testnet", "value": "deploytoken"},
             {"name": "3. Gửi Token ERC20 ngẫu nhiên hoặc File (addressERC20.txt) | Tea Testnet", "value": "sendtoken"},
             {"name": "4. Deploy NFT - Quản lí NFT [ Tạo | Đúc | Đốt ] | Tea Testnet", "value": "nftcollection"},
+            {"name": "5. Stake dTEA -> sTEA | Tea Testnet", "value": "stakingtea"},
+            {"name": "6. Unstake sTEA -> dTEA | Tea Testnet", "value": "unstaketea"},
+            {"name": "7. Deposit TEA -> dTEA | Tea Testnet", "value": "deposittea"},
+            {"name": "8. Withdraw dTEA -> TEA | Tea Testnet", "value": "withdrawtea"},
+            
             #{"name": "5. ETH Bridging (Sepolia ↔ Tea Testnet) | Tea Testnet", "value": "ethbridge"},
-            {"name": "5. Thoát", "value": "exit"},
+            {"name": "9. Thoát", "value": "exit"},
         ],
         'en': [
             {"name": "1. Send Random TX or File (address.txt) | Tea Testnet", "value": "sendtx"},
             {"name": "2. Deploy Token Smart Contract | Tea Testnet", "value": "deploytoken"},
             {"name": "3. Send ERC20 Token Randomly or File (addressERC20.txt) | Tea Testnet", "value": "sendtoken"},
             {"name": "4. Deploy NFT - Manage NFT Collection [ Create | Mint | Burn ] | Tea Testnet", "value": "nftcollection"},
+            {"name": "5. Stake dTEA -> sTEA | Tea Testnet", "value": "stakingtea"},
+            {"name": "6. Unstake sTEA -> dTEA | Tea Testnet", "value": "unstaketea"},
+            {"name": "7. Deposit TEA -> dTEA | Tea Testnet", "value": "deposittea"},
+            {"name": "8. Withdraw dTEA -> TEA | Tea Testnet", "value": "withdrawtea"},
+            
             #{"name": "5. ETH Bridging (Sepolia ↔ Tea Testnet) | Tea Testnet", "value": "ethbridge"},
-            {"name": "5. Exit", "value": "exit"},
+            {"name": "9. Exit", "value": "exit"},
         ]
     }
     return scripts[language]
