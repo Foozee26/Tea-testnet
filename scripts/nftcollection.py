@@ -307,11 +307,15 @@ async def deploy_nft(w3: Web3, private_key: str, wallet_index: int, name: str, s
         nonce = w3.eth.get_transaction_count(sender_address)
 
         print(f"{Fore.CYAN}  > {LANG[language]['estimating_gas']}{Style.RESET_ALL}")
+        # Fetch dynamic gas price
+        gas_price = int(w3.eth.gas_price * 1.2)
+        print(f"{Fore.YELLOW}  - Current gas price: {w3.from_wei(gas_price, 'gwei'):.2f} Gwei{Style.RESET_ALL}")
+
         tx = contract.constructor(name, symbol, max_supply).build_transaction({
             'from': sender_address,
             'nonce': nonce,
             'chainId': CHAIN_ID,
-            'gasPrice': w3.to_wei('0.1', 'gwei')
+            'gasPrice': gas_price
         })
 
         try:
@@ -361,11 +365,15 @@ async def mint_nft(w3: Web3, private_key: str, wallet_index: int, contract_addre
         print(f"{Fore.CYAN}  > {LANG[language]['preparing_tx']}{Style.RESET_ALL}")
         nonce = w3.eth.get_transaction_count(sender_address)
 
+        # Fetch dynamic gas price
+        gas_price = int(w3.eth.gas_price * 1.2)
+        print(f"{Fore.YELLOW}  - Current gas price: {w3.from_wei(gas_price, 'gwei'):.2f} Gwei{Style.RESET_ALL}")
+
         tx = contract.functions.mint(sender_address, token_id, token_uri).build_transaction({
             'from': sender_address,
             'nonce': nonce,
             'chainId': CHAIN_ID,
-            'gasPrice': w3.to_wei('0.1', 'gwei')
+            'gasPrice': gas_price
         })
 
         print(f"{Fore.CYAN}  > {LANG[language]['estimating_gas']}{Style.RESET_ALL}")
@@ -415,11 +423,15 @@ async def burn_nft(w3: Web3, private_key: str, wallet_index: int, contract_addre
         print(f"{Fore.CYAN}  > {LANG[language]['preparing_tx']}{Style.RESET_ALL}")
         nonce = w3.eth.get_transaction_count(sender_address)
 
+        # Fetch dynamic gas price
+        gas_price = int(w3.eth.gas_price * 1.2)
+        print(f"{Fore.YELLOW}  - Current gas price: {w3.from_wei(gas_price, 'gwei'):.2f} Gwei{Style.RESET_ALL}")
+
         tx = contract.functions.burn(token_id).build_transaction({
             'from': sender_address,
             'nonce': nonce,
             'chainId': CHAIN_ID,
-            'gasPrice': w3.to_wei('0.1', 'gwei')
+            'gasPrice': gas_price
         })
 
         print(f"{Fore.CYAN}  > {LANG[language]['estimating_gas']}{Style.RESET_ALL}")

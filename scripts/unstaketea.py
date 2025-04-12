@@ -197,11 +197,15 @@ async def unstake_tea(w3: Web3, private_key: str, amount: float, tx_count: int, 
     for i in range(tx_count):
         try:
             nonce = w3.eth.get_transaction_count(sender_address)
+            # Fetch dynamic gas price
+            gas_price = int(w3.eth.gas_price * 1.2)
+            print(f"{Fore.YELLOW}  - Current gas price: {w3.from_wei(gas_price, 'gwei'):.2f} Gwei{Style.RESET_ALL}")
+
             tx = staking_contract.functions.unstake(amount_wei).build_transaction({
                 'from': sender_address,
                 'nonce': nonce,
                 'chainId': CHAIN_ID,
-                'gasPrice': w3.to_wei('0.1', 'gwei')
+                'gasPrice': gas_price
             })
             gas_limit = staking_contract.functions.unstake(amount_wei).estimate_gas({'from': sender_address}) * 1.2
             tx['gas'] = int(gas_limit)

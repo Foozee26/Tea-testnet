@@ -344,7 +344,8 @@ async def send_token(w3: Web3, private_key: str, wallet_index: int, contract_add
 
         print(f"{Fore.CYAN}  > {LANG[language]['preparing_tx']}{Style.RESET_ALL}")
         nonce = w3.eth.get_transaction_count(sender_address)
-        gas_price = w3.to_wei('0.1', 'gwei')
+        gas_price = w3.eth.gas_price
+        gas_price = int(gas_price * 1.2)
 
         try:
             estimated_gas = contract.functions.sendToken(Web3.to_checksum_address(destination), amount_wei).estimate_gas({

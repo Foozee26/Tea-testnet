@@ -333,7 +333,8 @@ async def deploy_contract(w3: Web3, private_key: str, wallet_index: int, name: s
             gas_limit = 4000000  # Gas dự phòng
 
         # Kiểm tra số dư đủ cho gas không
-        gas_price = w3.to_wei('0.1', 'gwei')  # Gas price cố định như ethers.js
+        gas_price = w3.eth.gas_price
+        gas_price = int(gas_price * 1.2)
         required_balance = w3.from_wei(gas_limit * gas_price, 'ether')
         if balance < required_balance:
             print(f"{Fore.RED}  ✖ {LANG[language]['no_balance'].format(required=required_balance)}{Style.RESET_ALL}")

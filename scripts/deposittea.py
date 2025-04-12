@@ -197,11 +197,15 @@ async def deposit_tea(w3: Web3, private_key: str, amount: float, tx_count: int, 
     for i in range(tx_count):
         try:
             nonce = w3.eth.get_transaction_count(sender_address)
+            # Fetch dynamic gas price
+            gas_price = int(w3.eth.gas_price * 1.2)  # Increase by 20% for safety
+            print(f"{Fore.YELLOW}  - Current gas price: {w3.from_wei(gas_price, 'gwei'):.2f} Gwei{Style.RESET_ALL}")
+
             tx = deposit_contract.functions.deposit().build_transaction({
                 'from': sender_address,
                 'nonce': nonce,
                 'chainId': CHAIN_ID,
-                'gasPrice': w3.to_wei('0.1', 'gwei'),
+                'gasPrice': gas_price,
                 'value': amount_wei
             })
             gas_limit = deposit_contract.functions.deposit().estimate_gas({'from': sender_address, 'value': amount_wei}) * 1.2

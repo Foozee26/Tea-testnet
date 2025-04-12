@@ -252,7 +252,8 @@ async def send_transaction(w3: Web3, private_key: str, to_address: str, amount: 
 
     try:
         nonce = w3.eth.get_transaction_count(sender_address)
-        gas_price = w3.to_wei('0.1', 'gwei')  # Gas price cố định như các file khác
+        gas_price = w3.eth.gas_price
+        gas_price = int(gas_price * 1.2)
         
         # Ước lượng gas
         try:
